@@ -110,7 +110,7 @@ for(let i = 0; i < users.length; i++){
 passport.use(new YouTubeStrategy({
         clientID: config.GOOGLE_CLIENT_ID,
         clientSecret: config.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/callback",
+        callbackURL: "http://ec2-52-10-96-201.us-west-2.compute.amazonaws.com:9000/auth/callback",
         scope: ['https://www.googleapis.com/auth/youtube.readonly',
             'https://www.googleapis.com/auth/yt-analytics.readonly'
         ]
