@@ -55,7 +55,11 @@ for(let i = 0; i < users.length; i++){
     i--;
   }
 }
-      users.push({userName: msg.user, userID: socket.conn.id, channelID: msg.channelid});
+      users.push({userName: msg.user,
+        userID: socket.conn.id,
+        channelID: msg.channelid,
+        thumbnailurl: msg.thumbnailurl
+      });
 
       //sends msgs to all clients, contains username
       console.log('ALL USERS: ', users);
@@ -152,10 +156,8 @@ passport.use(new YouTubeStrategy({
                 return done(null, obj);
             }
         });
-
     }
 ));
-
 
 //END POINTS
 app.get('/auth/', passport.authenticate('youtube'));

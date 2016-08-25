@@ -19,6 +19,8 @@ console.log('PROMISE: ', promiseObj);
 
 $scope.channelid = promiseObj.channelid;
 
+$scope.thumbnailurl = promiseObj.thumbnailurl;
+
 $rootScope.loading = true;
 
 if(promiseObj){

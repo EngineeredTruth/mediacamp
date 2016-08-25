@@ -143,13 +143,13 @@
   width: 90%;
   margin: auto;
   border-radius: 2px;
+  padding-bottom: 3px;
 }
 
 .aUser {
   color: white;
-  margin-top: 5px;
-  padding: 4px;
   font-size: 13px;
+  margin-right: 2px;
 }
 
 .chatroom {
@@ -179,4 +179,18 @@
   height: 35px;
   width: auto;
   margin: 13px 12px;
+}
+
+.chat-thumbnail {
+  width: 16px;
+  padding: 0;
+}
+
+.row-chat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px auto 10px auto;
+  padding: 0 4px 0 4px;
 }

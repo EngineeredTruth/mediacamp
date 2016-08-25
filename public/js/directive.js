@@ -37,10 +37,11 @@ app.directive('navBar', () => {
 
                     socket.on('server to chatList', (userList) => {
 
-                      $('.aUser').remove();
+                      $('.row-chat').remove();
 
                             for (var i = 0; i < userList.length; i++) {
-                                $('<a target="_blank" href=http://www.youtube.com/channel/' + userList[i].channelID + '><li class="aUser">' + userList[i].userName + '</li></a>').appendTo(element);
+                              console.log('ThumbnailULR received: ', userList[i].thumbnailURL);
+                                $('<a target="_blank" href=http://www.youtube.com/channel/' + userList[i].channelID + '><div class="row-chat"><img class="chat-thumbnail" src='+userList[i].thumbnailurl+' /><li class="aUser">' + userList[i].userName + '</li></div></a>').appendTo(element);
                             }
                         });
 
@@ -48,7 +49,7 @@ app.directive('navBar', () => {
                           console.log('msg received from masterCtrl: ', msg);
 
                             if (element[0].innerText.search(msg.user) === -1) {
-                                $('<a target="_blank" href=http://www.youtube.com/channel/' + msg.channelid + '><li class="aUser">' + msg.user + '</li></a>').appendTo(element);
+                                $('<a target="_blank" href=http://www.youtube.com/channel/' + msg.channelid + '><div class="row-chat"><img class="chat-thumbnail" src='+msg.thumbnailurl+' /><li class="aUser">' + msg.user + '</li></div></a>').appendTo(element);
                             }
                         });
 

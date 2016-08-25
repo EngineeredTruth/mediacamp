@@ -294,5 +294,4 @@ const thumbnail = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&i
       })
     }
 
-
 }
