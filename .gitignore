@@ -4,3 +4,8 @@ config.js
 /public/angular-*
 /public/ng-Dialog
 /public/img
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

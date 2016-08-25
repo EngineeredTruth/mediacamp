@@ -22,7 +22,8 @@
   margin: 5px;
   /*padding: 13px 15px 0px 15px;*/
   border-radius: 4px;
-  background: URL('../img/chatroom-bg-3.jpg');
+  /*background: URL('../img/chatroom-bg-3.jpg');*/
+  background-color: #1E282D;
   background-size: cover;
   background-position: center center;
 }
@@ -178,7 +179,7 @@
 #chat-min {
   height: 35px;
   width: auto;
-  margin: 13px 12px;
+  margin: 30px 12px 0 0;
 }
 
 .chat-thumbnail {

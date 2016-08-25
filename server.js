@@ -8,7 +8,7 @@ import massive from 'massive';
 const YouTubeStrategy = require('passport-youtube-v3').Strategy;
 const port = 3000;
 const base = 'https://www.googleapis.com/youtube/v3'
-const connectionString = 'postgres://Tran@localhost/youtube';
+const connectionString = 'postgres://tran@localhost/youtube';
 const massiveInstance = massive.connectSync({
     connectionString: connectionString
 });
