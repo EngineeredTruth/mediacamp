@@ -169,15 +169,11 @@ app.get('/getAllData', uCtrl.read_user, uCtrl.read_watch_data, uCtrl.read_indivi
 // serialize / deserialize for passport
 // (only used with session, automatically set as next step from passport.use)
 
-var requireAuth = (req, res, next) => {
+app.get('/login', (req, res, next) => {
     if (req.isAuthenticated()) {
         return res.redirect('/#/dashboard')
     }
     return res.redirect('/auth'); //redirects user to app.get('/login')
-};
-
-app.get('/login', requireAuth, (req, res) => {
-    return res.redirect('/auth/callback');
 });
 
 app.get('/logout', (req, res) => {
