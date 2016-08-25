@@ -223,12 +223,22 @@ module.exports = {
     },
     thumbnail: (req, res, next) => {
 
-const thumbnail = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&id=' + channelID + '&key=AIzaSyDnGuZZAv1e1e4Oeb1ECeCxEV831HWtkIg';
+const thumbnail = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&id=' + req.user.id + '&key=AIzaSyDnGuZZAv1e1e4Oeb1ECeCxEV831HWtkIg';
         request(thumbnail, function(error, response, body) {
-          console.log('Snippets from ')
+          const obj = JSON.parse(body);
+          db.update_thumbnailURL([obj.items[0].snippet.thumbnails.default.url,req.user.id], (err, res) =>{
+            if(err){
+              console.log(err);
+            }
+            else {
+              console.log('THUMBNAIL UPDATE SUCCESS');
+            }
+          })
+          console.log('Snippets from thumbnail ctrl BODY: ', obj.items[0].snippet.thumbnails.default.url);
+
       return res.redirect('/#/dashboard');
     })
-    }
+  },
     read_user: (req, res, next) => {
         if (req.user.id) {
             db.read_user([req.user.id], (err, res1) => {
