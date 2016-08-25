@@ -194,6 +194,6 @@ passport.deserializeUser((obj, done) => {
     done(null, obj); // get data from session and put it on req.user in every endpoint;
 });
 
-http.listen(port, function() {
+http.listen(config.port, function() {
     console.log('Hosting port', port);
 });

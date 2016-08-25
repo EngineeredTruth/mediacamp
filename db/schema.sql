@@ -51,9 +51,3 @@ CREATE TABLE users
     cyworld integer,
     thumbnailurl character varying(255)
 );
-
-CREATE TABLE timewatched
-(
-    avgsecwatched integer,
-    u_id integer references users(id)
-);
