@@ -1,0 +1,151 @@
+.dash-container {
+    width: 95%;
+    height: 410px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    /*border: 1px dashed RGBA(255, 0, 0, 0.3);*/
+}
+.award-bg {
+    background: #F5F5F5;
+    display: flex;
+    justify-content: center;
+}
+.award {
+    height: 85%;
+    margin: auto;
+}
+.yt-space {
+    height: 300px;
+    margin: auto;
+}
+.dash-bullet-point {
+    font-family: 'Libre Baskerville', serif;
+}
+.dash-bullet-point li {
+    line-height: 55px;
+    font-size: 20px;
+}
+
+.video-thumb-container img {
+    width: 100%;
+}
+.blue {
+    color: #266B99;
+    font-weight: 600;
+}
+.header {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.header h1 {
+    font-family: "Open sans", sans-serif;
+    font-weight: 700;
+    color: #1E282D;
+}
+.header h2 {
+    color: #1C75BC;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.video-card {
+    height: 350px;
+    width: 446px;
+    margin: 30px;
+    padding-top: 20px;
+    box-shadow: 0 0 2px 2px RGBA(0, 0, 0, 0.15);
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    z-index: 0;
+}
+.video-thumb-container {
+    width: 85%;
+    height: auto;
+    margin: auto;
+}
+
+.video-card h1 {
+    padding-left: 19px;
+    padding-right: 19px;
+    font-size: 17px;
+    display: block;
+    height: 45px;
+    line-height: 20px;
+    text-align: center;
+}
+.video-card h2 {
+    font-size: 25px;
+    text-align: center;
+}
+.dimensions-adjust {
+    /*border: 1px solid magenta;*/
+    width: 95%;
+    margin-bottom: 25px;
+}
+.pie-chart {
+    width: 75%;
+    height: 550px;
+    margin: auto;
+    box-shadow: 0 0 2px 2px RGBA(0, 0, 0, 0.15);
+}
+
+.device-chart {
+    width: 45%;
+    height: 350px;
+    box-shadow: 0 0 2px 2px RGBA(0, 0, 0, 0.15);
+}
+
+.device-container {
+  width: 77.7%;
+  margin-bottom: 25px;
+}
+
+/* centered columns styles */
+
+.row-centered {
+    text-align: center;
+}
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: left;
+}
+
+.column-chart-container {
+  margin: auto;
+  border: 1px;
+}
+
+.column-chart {
+    width: 75%;
+    height: 550px;
+    margin: auto;
+    box-shadow: 0 0 2px 2px RGBA(0, 0, 0, 0.15);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+@media (max-width:1000px){
+  .row {
+    flex-direction: column;
+    width: 800px;
+  }
+  .device-chart {
+      width: 83.5%;
+  }
+
+}

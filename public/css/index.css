@@ -1,0 +1,102 @@
+@import url(https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+@font-face { font-family: League Spartan; src: url('fonts/LeagueSpartan-Bold.otf'); }
+@font-face { font-family: League Spartan; font-weight: bold; src: url('fonts/LeagueSpartan-Bold.otf');}
+
+body {
+font-family: 'Open Sans', sans-serif;
+background-color: RGB(240,240,240);
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  text-decoration: none;
+}
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.home-container{
+  height: 1000px;
+  width: 100%;
+}
+
+.bg-home {
+    background: url("../img/heros/homen.jpg");
+}
+
+.bg-dash {
+    background: url('../img/heros/dashboardn.jpg');
+}
+
+.bg-courses {
+    background: url('../img/heros/coursesn.jpg');
+}
+
+.bg-equipment {
+    background: url('../img/heros/equipmentn.jpg');
+}
+
+.bg-best-practices {
+    background: url('../img/heros/bestpracticesn.jpg');
+}
+
+.bg-beginner {
+    background: url('../img/heros/beginnern.jpg');
+}
+
+.bg-intermediate {
+    background: url('../img/heros/intermediaten.jpg');
+}
+
+.bg-advance {
+    background: url('../img/heros/advancen.jpg');
+}
+
+.hero {
+  height:66vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.hero-title {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 150px;
+  color: white;
+  text-shadow: 0 0 25px RGBA(0,0,0,1);
+}
+
+.home-introduction {
+  font-family: "Libre Baskerville";
+  font-size: 17px;
+  font-weight: 400;
+  padding: 42px;
+  width: 70%;
+  height: 300px;
+  margin: 40px auto 0 auto;
+  text-align: center;
+  background-color: white;
+  line-height: 40px;
+  box-shadow: 0 0 1px 1px  RGBA(0,0,0,.2);
+}
+
+@media (max-width:1000px){
+  .hero-title{
+      font-size: 100px;
+  }
+}

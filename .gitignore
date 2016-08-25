@@ -1,0 +1,6 @@
+node_modules
+config.js
+.DS_Store
+/public/angular-*
+/public/ng-Dialog
+/public/img

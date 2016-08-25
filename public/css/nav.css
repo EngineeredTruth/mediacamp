@@ -1,0 +1,86 @@
+nav {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    display: block;
+    background-color: rgb(21, 21, 21);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    z-index: 10
+}
+
+nav .nav-wrapper {
+  text-align: center;
+  width: 100%;
+}
+
+nav .brand-logo {
+  width: 4rem;
+  margin: 6px;
+  padding: 0px
+}
+
+.navbar-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav .navbar-links li {
+  float: left;
+  height: 46px;
+  transition: 0.4s
+}
+
+nav .navbar-links li:hover {
+  background: #1C75BC
+}
+
+.navbar-links li a {
+  color: rgb(255,255,255);
+  text-transform: capitalize;
+  font-weight: 300;
+  font-size: 1.5rem;
+  padding: 15px 15px 0 15px;
+  display: inline-block;
+  text-align: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login li a {
+  width: 97px;
+  color: rgb(255,255,255);
+  text-transform: capitalize;
+  font-weight: 300;
+  font-size: 1.5rem;
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  background: #47AD76;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-right: 15px;
+  transition: 0.4s;
+}
+
+.login li a:hover {
+  background:#2c6d4a;
+}
+
+#logout-btn a {
+  background: #C9505E;
+}
+
+#logout-btn a:hover {
+  background: #953c46;
+}
+
+nav ul a {
+  display: block;
+}

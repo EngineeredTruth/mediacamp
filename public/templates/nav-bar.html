@@ -1,0 +1,20 @@
+<nav>
+    <section class='nav-wrapper'>
+        <a ui-sref='home'>
+            <img class='brand-logo left' src="img/icons/Logo.svg" alt="" />
+        </a>
+
+        <ul class='navbar-links left'>
+            <li><a ui-sref='courses'>Courses</a></li>
+            <li><a ui-sref='equipment'>Equipment</a></li>
+            <li><a ui-sref='best-practices'>Best Practices</a></li>
+        </ul>
+
+        <ul class='login right'>
+            <li ng-class="{hidden : loading}"><a href='/login'>Login</a></li>
+            <li id='logout-btn' ng-class="{hidden : !loading}"><a href='/logout'>Logout</a></li>
+            <li ng-class="{hidden : !loading}"><a ui-sref='dashboard'>Dashboard</a></li>
+
+        </ul>
+    </section>
+</nav>

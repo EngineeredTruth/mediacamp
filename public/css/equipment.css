@@ -1,0 +1,153 @@
+.outer-container {
+    width: 90%;
+    height: 410px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    /*border: 1px solid RGBA(255, 0, 0, 0.3);*/
+}
+
+
+.tier {
+    border: 1px solid RGBA(100, 100, 100, 0.5);
+    width: 30%;
+    text-align: center;
+    padding-top: 20px;
+    box-shadow: 0 0 2px 2px RGBA(0, 0, 0, 0.15);
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.tier ul{
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+.beginner {
+    background: url('../img/heros/beginnern.jpg');
+    background-size: cover;
+}
+.intermediate {
+    background: url('../img/heros/intermediaten.jpg');
+    background-size: cover;
+}
+.advance {
+    background: url('../img/heros/advancen.jpg');
+    background-size: cover;
+}
+.thumb-wrapper {
+    margin: auto;
+    width: 90%;
+    height: 55%;
+    overflow: hidden;
+    box-shadow: 0 0 2px 2px RGBA(0, 0, 0, 0.15);
+}
+.thumbnail {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-position: center;
+    transition: all 3s ease-out;
+}
+.thumbnail:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.thumbnail h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 400;
+    color: white;
+    font-size: 50px;
+    text-shadow: 0 0 10px RGBA(0, 0, 0, 1);
+    margin-top: 62px;
+}
+.bullet-point {
+    margin-top: 30px;
+    font-family: 'Open Sans', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: black;
+}
+.product-container {
+    width: 69%;
+    height: 410px;
+    /*border: 1px solid red;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-container {
+  margin-left: 20px;
+  width: 25%;
+  height: 410px;
+  /*border: 1px dotted teal;*/
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-container h1 {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+.review-container img {
+  width: 100%;
+  box-shadow: 0 0 1px 1px RGBA(0,0,0,.25);
+  margin-bottom: 20px;
+}
+
+.review-container img:hover {
+  cursor:pointer;
+}
+
+.product {
+    height: 350px;
+    /*border: 1px solid blue;*/
+    margin: auto;
+}
+
+/*.features {
+  list-style-type: disc;
+}*/
+
+.feature-li{
+  font-family: 'Libre Baskerville';
+  line-height: 25px;
+}
+
+@media (max-width:1000px){
+  .outer-container {
+    flex-direction: column;
+    height: 700px;
+    align-items: center;
+  }
+  .bullet-point {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  .tier {
+    width: 550px;
+    height: 300px;
+    margin-bottom: 30px;
+  }
+  .thumbnail h1 {
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 400;
+      color: white;
+      font-size: 40px;
+      text-shadow: 0 0 10px RGBA(0, 0, 0, 1);
+      margin-top: 30px;
+  }
+
+}

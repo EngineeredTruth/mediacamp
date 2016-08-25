@@ -1,0 +1,105 @@
+<section class='home-container'>
+    <div class='bg-dash hero'>
+        <div class='hero-title'>
+            Dashboard
+        </div>
+    </div>
+    <chat-box id='chat-box' ng-show='chatVisibility===true'></chat-box>
+    <section ng-show='toggle==1'>
+        <div class='goal-bar-wrapper'>
+            <h1>You are <strong>{{timeLeft}}</strong> day(s) away from 10,000 subscribers</h1>
+            <uib-progressbar class='goal-bar progress-striped active' type='success' value='progressValue' max='100' animate='true'>
+                <h1>{{progressValue}}%</h1>
+            </uib-progressbar>
+        </div>
+        <main class='outer-container'>
+            <div class='inner-container award-bg'>
+                <img class='yt-space' src="img/images/yt-space.jpg" alt="" />
+            </div>
+            <div class='inner-container description'>
+                <h1>Youtube Space</h1>
+                <ul class='dash-bullet-point'>
+                    <li>Join the channel consultation program</li>
+                    <li>Become eligible for the YouTube NextUp contest</li>
+                    <li>Unlock production access at YouTube Spaces</li>
+                    <li>Become a YouTube Ambassador</li>
+                </ul>
+            </div>
+        </main>
+    </section>
+
+    <section ng-show='toggle==2'>
+
+        <div class='goal-bar-wrapper'>
+            <h1>You are <strong>{{timeLeft}}</strong> day(s) away from 100,000 subscribers</h1>
+            <uib-progressbar class='goal-bar progress-striped active' type='success' value='progressValue' max='100' animate='true'>
+                <h1>{{progressValue}}%</h1>
+            </uib-progressbar>
+        </div>
+
+            <main class='outer-container'>
+                <div class='inner-container award-bg'>
+                    <img class='award' src="img/images/silver-playbutton.png" alt="" />
+                </div>
+                <div class='inner-container description'>
+                    <h1>Silver Play Button</h1>
+                    <p>Get to 100,000 subscribers, and you'll be awarded with a shimmering Silver Play Button that you can proudly show to family, friends, and fans.</p>
+                </div>
+            </main>
+    </section>
+
+    <section ng-show='toggle==3' class='container'>
+        <div class='inner-container'>
+            Tier 3
+        </div>
+        <div class='inner-container'>
+        </div>
+    </section>
+
+    <div class='header'>
+        <h1>These are your most viewed videos this past year<h1>
+      <h2>Keep making more of these</h2>
+    </div>
+    <section class='container dimensions-adjust'>
+        <div class='row row-centered'>
+            <div class='col-md-4 video-card col-centered'>
+                <div class='video-thumb-container'>
+                    <img ng-src='http://img.youtube.com/vi/{{mostviewedvideo1}}/mqdefault.jpg' \>
+                </div>
+                <h1>{{mostviewedname1}}</h1>
+        <h2>Views: <span class='blue'>{{views1}}</span></h2>
+    </div>
+    <div class='col-md-4 video-card col-centered'>
+        <div class='video-thumb-container'>
+            <img ng-src='http://img.youtube.com/vi/{{mostviewedvideo2}}/mqdefault.jpg' \>
+        </div>
+        <h1>{{mostviewedname2}}</h1>
+        <h2>Views: <span class='blue'>{{views2}}</span></h2>
+    </div>
+    <div class='col-md-4 video-card col-centered'>
+        <div class='video-thumb-container'>
+            <img ng-src='http://img.youtube.com/vi/{{mostviewedvideo3}}/mqdefault.jpg' \>
+        </div>
+        <h1>{{mostviewedname3}}</h1>
+        <h2>Views: <span class='blue'>{{views3}}</span></h2>
+    </div>
+    </div>
+</section>
+
+<section class='container dimensions-adjust'>
+        <div google-chart chart="sharesChartObject" class='pie-chart'></div>
+</section>
+
+<section class='container dimensions-adjust' >
+        <div google-chart chart="minWatchedChartObject" class='column-chart' ></div>
+</section>
+
+<section class='device-container row'>
+        <div google-chart chart="deviceChartObject" class='device-chart' ></div>
+        <div google-chart chart="deviceAvgChartObject" class='device-chart'></div>
+</section>
+
+</section>
+
+<img ng-click='toggleChat()' ng-show='newMessage === false && chatVisibility === false' id='chat-icon' src='img/icons/chatroom.svg'/>
+<img ng-click='toggleChat()' ng-show='newMessage === true  && chatVisibility === false' id='chat-icon' src='img/icons/new-msg.png'/>

@@ -1,0 +1,30 @@
+<section class='chat-container'>
+  <div class='chatroom-headers'>
+    <!-- <h1>Welcome to the chat</h1> -->
+    <h2 class='chat-username-title'>{{userName}}</h2>
+    <img id='chat-groups' ng-click='toggleGroups()' class='right' src='img/icons/chatgroups.png'/>
+  </div>
+    <div class='chat-inner-container'>
+        <div class='chat-inner-left-container'>
+            <ul id='chat-log'> </ul>
+        </div>
+        <div class="chat-inner-right-container">
+          <ul ng-show='groups === false' id='chat-list' chat-list></ul>
+          <ul ng-show='groups === true' id='chat-list'>
+            <li id='users-list-header'>Chat Rooms</li>
+            <li class='chatroom'>Content Ideas</li>
+            <li class='chatroom'>Audience Retention</li>
+            <li class='chatroom'>Athiest Singles in Provo</li>
+          </ul>
+        </div>
+    </div>
+    <div class='chat-bottom-container'>
+    <form class='form-inline chat-input' ng-submit='sendMessage(text)'>
+        <div class='form-group'>
+            <input type="text" value="Type a message here..." id='textArea' ng-model='text'></input>
+            <button type="submit" class='btn btn-primary'>Send</button>
+        </div>
+    </form>
+    <img id='chat-min' ng-click='toggleChat()' src="img/icons/chat-min.png" alt="minimize chat button" />
+  </div>
+</section>
