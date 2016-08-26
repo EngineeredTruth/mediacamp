@@ -15,7 +15,7 @@ const massiveInstance = massive.connectSync({
 import google from 'googleapis';
 const youtube = google.youtubeAnalytics('v1');
 const OAuth2 = google.auth.OAuth2;
-const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SECRET, "http://localhost:3000/auth/callback");
+const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SECRET, "http://ec2-52-10-96-201.us-west-2.compute.amazonaws.com:900/auth/callback");
 
 const app = module.exports = express();
 
