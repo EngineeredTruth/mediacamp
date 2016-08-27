@@ -1,5 +1,4 @@
 app.controller('dashCtrl', function($scope, promiseObj, $timeout, $rootScope) {
-
 $scope.chatVisibility = false;
 
 $scope.newMessage = false;
@@ -20,15 +19,6 @@ console.log('PROMISE: ', promiseObj);
 $scope.channelid = promiseObj.channelid;
 
 $scope.thumbnailurl = promiseObj.thumbnailurl;
-
-$rootScope.loading = true;
-
-if(promiseObj){
-  $rootScope.loading = true;
-}
-else {
-  $rootScope.loading = false;
-}
 
 const data = promiseObj;
 const avg = parseInt(promiseObj.avgsecwatched).toFixed(0);

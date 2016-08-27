@@ -87,6 +87,12 @@ module.exports = {
             if (err) {
                 console.log(err);
             }
+            if (response.rows === undefined) {
+                response.rows = ([
+                    [null, null]
+                ]);
+            }
+
             const viewsPerMonth = response.rows[0][0]
             const subsPerMonth = response.rows[0][1] - response.rows[0][2];
             req.session.subsPerMonth = subsPerMonth;
@@ -100,6 +106,14 @@ module.exports = {
             if (err) {
                 console.log(err);
             }
+            if (response.rows === undefined) {
+                response.rows = [
+                    [null, null],
+                    [null, null],
+                    [null, null]
+                ];
+            }
+
             const [a, b] = response.rows[0];
             const [c, d] = response.rows[1];
             const [e, f] = response.rows[2];
@@ -112,7 +126,13 @@ module.exports = {
                 for (let i = 0; i < videoIDs.length; i++) {
                     const videoInfo = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + videoIDs[i] + '&key=AIzaSyDnGuZZAv1e1e4Oeb1ECeCxEV831HWtkIg';
                     request(videoInfo, function(error, response, body) {
-                        const obj = JSON.parse(body);
+                        let obj = JSON.parse(body);
+
+                        console.log('BODY: ',body);
+                        if (obj.items.length === 0) {
+                          console.log('Object length is 0');
+                        } else {
+
                         const name = obj.items[0].snippet.localized.title
                         switch (i) {
                             case 0:
@@ -137,6 +157,9 @@ module.exports = {
                                 });
                                 break;
                         }
+                        }
+
+
                     });
                 }
             });
@@ -147,6 +170,7 @@ module.exports = {
             if (err) {
                 console.log(err);
             } else {
+
                 if (response.rows !== undefined) {
                     for (var i = 0; i < response.rows.length; i++) {
                         var obj = {};
@@ -178,6 +202,13 @@ module.exports = {
             if (err) {
                 console.log(err);
             } else {
+
+                if (response.rows === undefined) {
+                    response.rows = [
+                        [null]
+                    ];
+                }
+
                 db.read_id([channelID], (err, res) => {
                     const id = res[0].id;
                     db.update_avg_view_duration([key, response.rows[0][0]], (err, response) => {
@@ -189,63 +220,77 @@ module.exports = {
                     })
                 });
             }
-             next();
-        });
-    }, device: (req, res, next) => {
-      const auth = req.user.auth;
-      const channelID = req.user.id;
-      const key = req.user.key;
-
-      const oneYearDevice = {
-          auth: auth,
-          ids: "channel==" + channelID,
-          "start-date": lastYear,
-          "end-date": today,
-          metrics: "views",
-          dimensions: 'deviceType',
-      }
-
-      youtube.reports.query(oneYearDevice, (err, response) => {
-          if (err) {
-              console.log('there was an error', err);
-          }
-          let update_device_type_params = [];
-
-          for(let i = 0; i < response.rows.length; i++){
-            update_device_type_params.push(response.rows[i][1]);
-          }
-
-          update_device_type_params.push(key);
-
-          db.update_device_type(update_device_type_params, (err, res)=> {});
             next();
-      });
+        });
+    },
+    device: (req, res, next) => {
+        const auth = req.user.auth;
+        const channelID = req.user.id;
+        const key = req.user.key;
+
+        const oneYearDevice = {
+            auth: auth,
+            ids: "channel==" + channelID,
+            "start-date": lastYear,
+            "end-date": today,
+            metrics: "views",
+            dimensions: 'deviceType',
+        }
+
+        youtube.reports.query(oneYearDevice, (err, response) => {
+            if (err) {
+                console.log('there was an error', err);
+            }
+
+            if (response.rows === undefined) {
+                response.rows == [
+                    [null]
+                ];
+                return next();
+            } else {
+            let update_device_type_params = [];
+
+            for (let i = 0; i < response.rows.length; i++) {
+                update_device_type_params.push(response.rows[i][1]);
+            }
+
+            update_device_type_params.push(key);
+
+            db.update_device_type(update_device_type_params, (err, res) => {});
+            return next();
+            }
+        });
     },
     thumbnail: (req, res, next) => {
 
-const thumbnail = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&id=' + req.user.id + '&key=AIzaSyDnGuZZAv1e1e4Oeb1ECeCxEV831HWtkIg';
+        const thumbnail = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&id=' + req.user.id + '&key=AIzaSyDnGuZZAv1e1e4Oeb1ECeCxEV831HWtkIg';
         request(thumbnail, function(error, response, body) {
-          const obj = JSON.parse(body);
-          db.update_thumbnailURL([obj.items[0].snippet.thumbnails.default.url,req.user.id], (err, res) =>{
-            if(err){
-              console.log(err);
-            }
-            else {
-              console.log('THUMBNAIL UPDATE SUCCESS');
-            }
-          })
-          console.log('Snippets from thumbnail ctrl BODY: ', obj.items[0].snippet.thumbnails.default.url);
 
-      return res.redirect('/#/dashboard');
-    })
-  },
+            const obj = JSON.parse(body);
+            if(obj.items.length != 0){
+
+
+            db.update_thumbnailURL([obj.items[0].snippet.thumbnails.default.url, req.user.id], (err, res) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('THUMBNAIL UPDATE SUCCESS');
+                }
+            })
+            console.log('Snippets from thumbnail ctrl BODY: ', obj.items[0].snippet.thumbnails.default.url);
+
+            return res.redirect('/#/dashboard');
+            }
+            return res.redirect('/#/dashboard');
+        })
+    },
     read_user: (req, res, next) => {
+
         if (req.user.id) {
             db.read_user([req.user.id], (err, res1) => {
                 req.session.data = res1[0];
                 return next();
             })
-
         } else {
             return res.status(200).redirect('/auth');
         }
@@ -262,36 +307,36 @@ const thumbnail = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&i
         })
     },
     read_watch_data: (req, res, next) => {
-      // console.log(req.session.data);
-      db.read_avg_sec_watched((err, res2) => {
-          req.session.data.avgsecwatched = res2[0].avg;
-          next();
-      });
+        // console.log(req.session.data);
+        db.read_avg_sec_watched((err, res2) => {
+            req.session.data.avgsecwatched = res2[0].avg;
+            next();
+        });
     },
     read_individual_watched: (req, res, next) => {
-      db.read_individual_watched([req.session.data.id],(err,minutes) => {
-        // console.log('MAI RESPONSE', minutes);
-        req.session.data.avgindividualsec = minutes[0].avgsecwatched;
-        next();
-      })
+        db.read_individual_watched([req.session.data.id], (err, minutes) => {
+            // console.log('MAI RESPONSE', minutes);
+            req.session.data.avgindividualsec = minutes[0].avgsecwatched;
+            next();
+        })
     },
     read_device_data: (req, res, next) => {
-      db.read_device_data([req.user.key], (err, response) => {
-        if(err){
-          console.log('Error from read_device_data: ', err);
-        }
-        req.session.data.device = response[0];
-        next();
-      });
+        db.read_device_data([req.user.key], (err, response) => {
+            if (err) {
+                console.log('Error from read_device_data: ', err);
+            }
+            req.session.data.device = response[0];
+            next();
+        });
     },
     read_avg_device_data: (req, res, next) => {
-      db.read_avg_device_data((err,response) =>{
-        if(err){
-          console.log('Error from read_avg_device_data', err)
-        }
-        req.session.data.device_avg = response[0];
-        res.send(req.session.data);
-      })
+        db.read_avg_device_data((err, response) => {
+            if (err) {
+                console.log('Error from read_avg_device_data', err)
+            }
+            req.session.data.device_avg = response[0];
+            res.send(req.session.data);
+        })
     }
 
 }

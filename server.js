@@ -6,7 +6,6 @@ import config from './config.js';
 import passport from 'passport';
 import massive from 'massive';
 const YouTubeStrategy = require('passport-youtube-v3').Strategy;
-const port = 3000;
 const base = 'https://www.googleapis.com/youtube/v3'
 const connectionString = 'postgres://tran@localhost/youtube';
 const massiveInstance = massive.connectSync({
@@ -15,7 +14,7 @@ const massiveInstance = massive.connectSync({
 import google from 'googleapis';
 const youtube = google.youtubeAnalytics('v1');
 const OAuth2 = google.auth.OAuth2;
-const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SECRET, "http://ec2-52-10-96-201.us-west-2.compute.amazonaws.com:900/auth/callback");
+const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SECRET, "http://localhost:3000/auth/callback");
 
 const app = module.exports = express();
 
@@ -86,23 +85,6 @@ for(let i = 0; i < users.length; i++){
         console.log('SOCKET DISCONNECT: ', socket.conn.id);
     })
 
-
-//change rooms
-// socket.on('Change room to server', (roomObj) =>{
-//   socket.leave('General Chat');
-//   socket.join(roomObj.room);
-//
-//   console.log('Attempting to change room for: ', roomObj);
-//
-// //searches for for the user and changes user.room to the appropriate room.
-//   for (let i = 0; i < users.length; i++) {
-//
-//     if(users[i].userName === roomObj.userName){
-//       users[i].room = roomObj.room;
-//       console.log('CHANGE ROOM TO: ', users[i].room);
-//     }
-//   }
-// })
 });
 
 
@@ -110,7 +92,7 @@ for(let i = 0; i < users.length; i++){
 passport.use(new YouTubeStrategy({
         clientID: config.GOOGLE_CLIENT_ID,
         clientSecret: config.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://ec2-52-10-96-201.us-west-2.compute.amazonaws.com:9000/auth/callback",
+        callbackURL: "http://localhost:3000/auth/callback",
         scope: ['https://www.googleapis.com/auth/youtube.readonly',
             'https://www.googleapis.com/auth/yt-analytics.readonly'
         ]
@@ -178,6 +160,15 @@ app.get('/login', (req, res, next) => {
     return res.redirect('/auth'); //redirects user to app.get('/login')
 });
 
+app.get('/authCheck', (req, res, next) => {
+  if(req.isAuthenticated()){
+    return res.send({loggedin:true})
+  }
+  else {
+    return res.send({loggedin:false});
+  }
+})
+
 app.get('/logout', (req, res) => {
   req.session.destroy((e)=>{
     req.logout();
@@ -195,5 +186,5 @@ passport.deserializeUser((obj, done) => {
 });
 
 http.listen(config.port, function() {
-    console.log('Hosting port', port);
+    console.log('Hosting port', config.port);
 });

@@ -139,6 +139,12 @@
   margin: auto;
 }
 
+.newb-container {
+  width: 800px;
+  height: 500px;
+  border: 1px dotted blue;
+}
+
 @media (max-width:1000px){
   .row {
     flex-direction: column;
@@ -147,5 +153,4 @@
   .device-chart {
       width: 83.5%;
   }
-
 }
