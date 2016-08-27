@@ -61,6 +61,10 @@ a:hover {
     background: url('../img/heros/advancen.jpg');
 }
 
+.bg-easter-egg {
+  background: url('../img/heros/easter-egg.jpg');
+}
+
 .hero {
   height:66vh;
   width: 100%;

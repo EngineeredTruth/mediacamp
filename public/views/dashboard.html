@@ -1,4 +1,4 @@
-
+<div ng-if='totalSubs !== 0 && subRate !== null'>
 <section class='home-container'>
     <div class='bg-dash hero'>
         <div class='hero-title'>
@@ -104,9 +104,13 @@
 
 <img ng-click='toggleChat()' ng-show='newMessage === false && chatVisibility === false' id='chat-icon' src='img/icons/chatroom.svg'/>
 <img ng-click='toggleChat()' ng-show='newMessage === true  && chatVisibility === false' id='chat-icon' src='img/icons/new-msg.png'/>
+</div>
 
-
-<!-- <div class='newb-container'>
-<h1>Everyone starts at 0</h1>
-<h2>And you're starting at</h2>
-</div> -->
+<section class='home-container'>
+<div class='bg-easter-egg hero'>
+    <div class='easter-egg'>
+        <h1>Everyone starts at 0<h2>
+        <h2>And you're at 0</h2>
+    </div>
+</div>
+</section>

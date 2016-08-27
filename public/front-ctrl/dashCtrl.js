@@ -38,7 +38,6 @@ $scope.mostviewedname2 = data.mostviewedname2;
 $scope.mostviewedname3 = data.mostviewedname3;
 
 $scope.totalSubs = data.subscribercount;
-$scope.totalSubs = data.subscribercount;
 $scope.subRate = data.subscriberrate;
 $scope.toggle = 1;
 
