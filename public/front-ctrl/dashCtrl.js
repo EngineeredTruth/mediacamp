@@ -1,4 +1,4 @@
-app.controller('dashCtrl', function($scope, promiseObj, $timeout, $rootScope) {
+app.controller('dashCtrl', function($scope, promiseObj, $timeout, $rootScope, ngDialog) {
 $scope.chatVisibility = false;
 
 $scope.newMessage = false;
@@ -309,5 +309,9 @@ $scope.deviceAvgChartObject.options = {
     colors:['#1C75BC','#106B84','#1E282D','#C9505E','#151515','#2d8659','#e67300','#990099','#996633','#b32d00','#ff9999','#00e673','#ffff99']
 };
 
+$scope.harambe = function(){
+  console.log('HARAMBE');
+  ngDialog.open({template: '../templates/harambe.html', className: 'ngdialog-theme-default', width: '650px'});
+}
 
 });

@@ -106,8 +106,8 @@
 <img ng-click='toggleChat()' ng-show='newMessage === true  && chatVisibility === false' id='chat-icon' src='img/icons/new-msg.png'/>
 </div>
 
-<section class='home-container'>
-<div class='bg-easter-egg hero'>
+<section ng-if='totalSubs === 0 && subRate === null' class='home-container'>
+<div ng-click='harambe()' class='bg-easter-egg hero'>
     <div class='easter-egg'>
         <h1>Everyone starts at 0<h2>
         <h2>And you're at 0</h2>

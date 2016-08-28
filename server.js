@@ -107,7 +107,7 @@ passport.use(new YouTubeStrategy({
         let obj = {}
         obj.id = profile.id;
         obj.auth = oauth2Client;
-
+        console.log('DB COMPLETE: ', db);
         db.read_user([profile.id], (err, response) => {
 
             if (typeof response[0] === 'undefined') {

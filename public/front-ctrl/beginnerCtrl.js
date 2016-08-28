@@ -1,13 +1,18 @@
-app.controller('beginnerCtrl', function($scope, ngDialog){
+app.controller('beginnerCtrl', function($rootScope, $scope, ngDialog, $sce){
 
-      $scope.clickToOpen =  () => {
-          console.log('Clicking Open');
+      $scope.clickToOpen = (x) => {
+        $rootScope.x = x;
+          console.log('Clicking Open: ', x);
           ngDialog.open({ template: '../templates/popupTmpl.html',
           className: 'ngdialog-theme-default',
           height: 700,
-          width: 650,
+          width: 750,
           closeByDocument: true,
-          cashe: false});
+          cashe: false,
+          controller: 'beginnerCtrl'
+        });
       };
+
+      $scope.url = $sce.trustAsResourceUrl('https://www.youtube.com/embed/'+$rootScope.x+'?autoplay=1')
 
   });
