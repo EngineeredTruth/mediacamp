@@ -1,4 +1,4 @@
-app.controller('beginnerCtrl', function($rootScope, $scope, ngDialog, $sce){
+app.controller('beginnerCtrl', function($rootScope, $scope, ngDialog, $sce, equipmentSrvc){
 
       $scope.clickToOpen = (x) => {
         $rootScope.x = x;
@@ -12,6 +12,8 @@ app.controller('beginnerCtrl', function($rootScope, $scope, ngDialog, $sce){
           controller: 'beginnerCtrl'
         });
       };
+
+      $scope.beginnerArray = equipmentSrvc.beginnerArray;
 
       $scope.url = $sce.trustAsResourceUrl('https://www.youtube.com/embed/'+$rootScope.x+'?autoplay=1')
 

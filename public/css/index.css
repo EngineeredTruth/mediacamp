@@ -8,6 +8,8 @@ font-family: 'Open Sans', sans-serif;
 background-color: RGB(240,240,240);
 }
 
+body.ngdialog-open { overflow: initial !important; }
+
 a {
   text-decoration: none;
   background-color: transparent;
@@ -90,8 +92,8 @@ a:hover {
   font-size: 17px;
   font-weight: 400;
   padding: 42px;
-  width: 70%;
-  height: 300px;
+  width: 550px;
+  height: 29node0px;
   margin: 40px auto 0 auto;
   text-align: center;
   background-color: white;

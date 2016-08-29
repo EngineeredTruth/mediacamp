@@ -185,12 +185,13 @@
 .chat-thumbnail {
   width: 16px;
   padding: 0;
+  margin: 0 7px 0 0;
 }
 
 .row-chat {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;;
   align-items: center;
   margin: 10px auto 10px auto;
   padding: 0 4px 0 4px;

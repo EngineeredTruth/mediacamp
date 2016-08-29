@@ -17,7 +17,8 @@ app.directive('navBar', () => {
                     if ($rootScope.userName === msg.user) {
                         $('#chat-log').append($('<li class="text text-right">').text(msg.message));
                     } else {
-                      scope.newMessage = true;
+                      console.log('scope.newMessage before its changed: ', scope.newMessage);
+                      scope.newMessage.newMessage = true;
                       scope.$apply();
                       console.log('scope.newMessage:', scope.newMessage);
                         $('#chat-log').append($('<li class="text text-left">').text(msg.user + ': ' + msg.message));

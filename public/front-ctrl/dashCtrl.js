@@ -1,12 +1,15 @@
 app.controller('dashCtrl', function($scope, promiseObj, $timeout, $rootScope, ngDialog) {
+
 $scope.chatVisibility = false;
 
-$scope.newMessage = false;
+$scope.newMessage = {newMessage: false};
 
 $scope.toggleChat = () => {
   $scope.chatVisibility = !$scope.chatVisibility;
-  $scope.newMessage = false;
-  console.log($scope.chatVisibility);
+  console.log('New message before toggled: ', $scope.newMessage);
+  $scope.newMessage.newMessage = false;
+  console.log('New message: ', $scope.newMessage);
+  console.log('Chat Visibility: ',$scope.chatVisibility);
 }
 
 $scope.toggleNewMessage = (argument) => {
@@ -135,7 +138,6 @@ $scope.sharesChartObject.data = {"cols": [
       {v: data.twitter},
     ]}
 ]};
-
 
 $scope.sharesChartObject.options = {
     pieHole: 0.4,

@@ -6,6 +6,8 @@
         </div>
     </div>
     <chat-box id='chat-box' ng-show='chatVisibility===true'></chat-box>
+    <img ng-click='toggleChat()' ng-show='newMessage.newMessage === false && chatVisibility === false' id='chat-icon' src='img/icons/chatroom.svg'/>
+    <img ng-click='toggleChat()' ng-show='newMessage.newMessage === true && chatVisibility === false' id='chat-icon' src='img/icons/new-msg.png'/>
     <section ng-show='toggle==1'>
         <div class='goal-bar-wrapper'>
             <h1>You are <strong>{{timeLeft}}</strong> day(s) away from 10,000 subscribers</h1>
@@ -101,10 +103,11 @@
 </section>
 
 </section>
+<!-- </div> -->
 
-<img ng-click='toggleChat()' ng-show='newMessage === false && chatVisibility === false' id='chat-icon' src='img/icons/chatroom.svg'/>
-<img ng-click='toggleChat()' ng-show='newMessage === true  && chatVisibility === false' id='chat-icon' src='img/icons/new-msg.png'/>
-</div>
+
+
+
 
 <section ng-if='totalSubs === 0 && subRate === null' class='home-container'>
 <div ng-click='harambe()' class='bg-easter-egg hero'>
