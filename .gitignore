@@ -5,7 +5,5 @@ config.js
 /public/ng-Dialog
 /public/img
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+/older node pem
+Node2.pem

@@ -14,7 +14,7 @@ const massiveInstance = massive.connectSync({
 import google from 'googleapis';
 const youtube = google.youtubeAnalytics('v1');
 const OAuth2 = google.auth.OAuth2;
-const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SECRET, "http://mediacamp.co/auth/callback");
+const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SECRET, "http://localhost:3000/auth/callback");
 
 const app = module.exports = express();
 
@@ -92,7 +92,7 @@ for(let i = 0; i < users.length; i++){
 passport.use(new YouTubeStrategy({
         clientID: config.GOOGLE_CLIENT_ID,
         clientSecret: config.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://mediacamp.co/auth/callback",
+        callbackURL: "http://localhost:3000/auth/callback",
         scope: ['https://www.googleapis.com/auth/youtube.readonly',
             'https://www.googleapis.com/auth/yt-analytics.readonly'
         ]

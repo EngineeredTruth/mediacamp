@@ -2,6 +2,10 @@ app.controller('dashCtrl', function($scope, promiseObj, $timeout, $rootScope, ng
 
 $scope.chatVisibility = false;
 
+if(promiseObj){
+  $rootScope.promiseObj = promiseObj
+}
+
 $scope.newMessage = {newMessage: false};
 
 $scope.toggleChat = () => {
@@ -16,6 +20,7 @@ $scope.toggleNewMessage = (argument) => {
   $scope.newMessage = argument;
   console.log($scope.newMessage);
 }
+
 
 console.log('PROMISE: ', promiseObj);
 
@@ -79,6 +84,13 @@ $timeout(function(){
 
 } else if (tSubs < 1000000 && tSubs > 100000){
   $scope.toggle=3;
+
+  const percentDone = (tSubs/10000).toFixed(2);
+  $scope.timeLeft = (((1000000-tSubs) / sRate) * 30).toFixed(0);
+  $timeout(function(){
+    $scope.progressValue = percentDone;
+  },200);
+
 }
 
 $scope.sharesChartObject = {};

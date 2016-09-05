@@ -1,4 +1,4 @@
-app.controller('masterCtrl', ($scope, socket, factory)=>{
+app.controller('masterCtrl', ($scope, socket, factory, $rootScope)=>{
 
 $scope.loading = true;
 

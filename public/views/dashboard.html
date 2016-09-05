@@ -52,11 +52,22 @@
     </section>
 
     <section ng-show='toggle==3' class='container'>
-        <div class='inner-container'>
-            Tier 3
-        </div>
-        <div class='inner-container'>
-        </div>
+      <div class='goal-bar-wrapper'>
+          <h1>You are <strong>{{timeLeft}}</strong> day(s) away from 1,000,000 subscribers</h1>
+          <uib-progressbar class='goal-bar progress-striped active' type='success' value='progressValue' max='100' animate='true'>
+              <h1>{{progressValue}}%</h1>
+          </uib-progressbar>
+      </div>
+
+          <main class='outer-container'>
+              <div class='inner-container award-bg'>
+                  <img class='award' src="img/images/gold-playbutton.png" alt="" />
+              </div>
+              <div class='inner-container description'>
+                  <h1>Gold Play Button</h1>
+                  <p>Land a whole 1 million subscribers, and you'll soon be hanging a big, shiny Gold Play Button on your wall for everyone to see.</p>
+              </div>
+          </main>
     </section>
 
     <div class='header'>
@@ -103,10 +114,7 @@
 </section>
 
 </section>
-<!-- </div> -->
-
-
-
+</div>
 
 
 <section ng-if='totalSubs === 0 && subRate === null' class='home-container'>

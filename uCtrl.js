@@ -297,8 +297,14 @@ module.exports = {
     },
     read_id: (req, res, next) => {
 
+      if(req.user.id === undefined){
+        
+        return res.status(500).redirect('/');
+      }
+
         db.read_id([req.user.id], (err, res) => {
-            if (res) {
+
+            if (req.user) {
                 req.user.key = res[0].id;
                 return next();
             } else {
@@ -337,6 +343,19 @@ module.exports = {
             req.session.data.device_avg = response[0];
             res.send(req.session.data);
         })
+    },
+    error: (req, res, next) => {
+      // console.log('REQ: ', req);
+      // console.log('RES: ', res);
+      console.log('ERROR LOGGER');
+      return next();
+    },
+    error2: (req, res, next) => {
+      // console.log('REQ: ', req);
+      // console.log('RES: ', res);
+      console.log('ERROR LOGGER 2');
+      return next();
     }
+
 
 }

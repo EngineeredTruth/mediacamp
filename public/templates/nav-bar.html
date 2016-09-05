@@ -13,7 +13,7 @@
         <ul class='login right'>
             <li ng-class="{hidden : loading}"><a href='/login'>Login</a></li>
             <li id='logout-btn' ng-class="{hidden : !loading}"><a href='/logout'>Logout</a></li>
-            <li ng-class="{hidden : !loading}"><a ui-sref='dashboard'>Dashboard</a></li>
+            <li ng-click='noAccount()' ng-class="{hidden : !loading}"><a ui-sref='dashboard'>Dashboard</a></li>
         </ul>
     </section>
 </nav>
