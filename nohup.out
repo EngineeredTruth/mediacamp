@@ -1,0 +1,11 @@
+module.js:442
+    throw err;
+    ^
+
+Error: Cannot find module '/Users/Tran/Desktop/DevMountain/Personal Projects/MediaCamp/test1.js'
+    at Function.Module._resolveFilename (module.js:440:15)
+    at Function.Module._load (module.js:388:25)
+    at Module.runMain (module.js:575:10)
+    at run (bootstrap_node.js:352:7)
+    at startup (bootstrap_node.js:144:9)
+    at bootstrap_node.js:467:3
