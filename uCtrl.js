@@ -286,7 +286,7 @@ module.exports = {
     },
     read_user: (req, res, next) => {
 
-        if (req.user.id) {
+        if (req.user) {
             db.read_user([req.user.id], (err, res1) => {
                 req.session.data = res1[0];
                 return next();
@@ -298,7 +298,7 @@ module.exports = {
     read_id: (req, res, next) => {
 
       if(req.user.id === undefined){
-        
+
         return res.status(500).redirect('/');
       }
 

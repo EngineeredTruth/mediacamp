@@ -1,4 +1,4 @@
-var app = angular.module('app',["ui.router",'ui.bootstrap','ngAnimate','ngTouch', "googlechart", 'btford.socket-io','ngDialog'])
+var app = angular.module('app',["ui.router",'ui.bootstrap','ngAnimate','ngTouch', "googlechart", 'btford.socket-io', 'ngDialog'])
   .constant('socket',io())
   .config(function($stateProvider, $urlRouterProvider){
 

@@ -8,7 +8,6 @@ font-family: 'Open Sans', sans-serif;
 background-color: RGB(240,240,240);
 }
 
-body.ngdialog-open { overflow: initial !important; }
 
 a {
   text-decoration: none;
