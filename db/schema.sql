@@ -57,3 +57,8 @@ create table device_type (
   unknown_platform int,
   mobile int
 );
+
+create table timewatched (
+  avgsecwatched int,
+  u_id int references users(id)
+);

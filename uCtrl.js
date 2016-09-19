@@ -321,7 +321,8 @@ module.exports = {
     },
     read_individual_watched: (req, res, next) => {
         db.read_individual_watched([req.session.data.id], (err, minutes) => {
-            // console.log('MAI RESPONSE', minutes);
+          if(err) conosle.log('read individual watched: ', err)
+          console.log('minutes: ', minutes)
             req.session.data.avgindividualsec = minutes[0].avgsecwatched;
             next();
         })
