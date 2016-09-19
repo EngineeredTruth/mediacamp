@@ -7,14 +7,14 @@ import passport from 'passport';
 import massive from 'massive';
 const YouTubeStrategy = require('passport-youtube-v3').Strategy;
 const base = 'https://www.googleapis.com/youtube/v3'
-const connectionString = 'postgres://tran@localhost/youtube';
+const connectionString = 'postgres://postgres:butters@localhost/youtube';
 const massiveInstance = massive.connectSync({
     connectionString: connectionString
 });
 import google from 'googleapis';
 const youtube = google.youtubeAnalytics('v1');
 const OAuth2 = google.auth.OAuth2;
-const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SECRET, "http://localhost:3000/auth/callback");
+const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SECRET, "http://mediacamp.co/auth/callback");
 
 const app = module.exports = express();
 
@@ -92,7 +92,7 @@ for(let i = 0; i < users.length; i++){
 passport.use(new YouTubeStrategy({
         clientID: config.GOOGLE_CLIENT_ID,
         clientSecret: config.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/callback",
+        callbackURL: "http://mediacamp.co/auth/callback",
         scope: ['https://www.googleapis.com/auth/youtube.readonly',
             'https://www.googleapis.com/auth/yt-analytics.readonly'
         ]
