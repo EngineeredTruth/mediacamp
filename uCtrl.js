@@ -106,6 +106,7 @@ module.exports = {
             if (err) {
                 console.log(err);
             }
+            console.log('DERP: ', response.rows.length)
             if (response.rows === undefined) {
                 response.rows = [
                     [null, null],
@@ -114,9 +115,22 @@ module.exports = {
                 ];
             }
 
-            const [a, b] = response.rows[0];
-            const [c, d] = response.rows[1];
-            const [e, f] = response.rows[2];
+            if (response.rows.length === 2) {
+                var [a, b] = response.rows[0];
+                var [c, d] = response.rows[1];
+                var [e, f] = [null, null]
+            }
+
+            if (response.rows.length === 1) {
+                var [a, b] = response.rows[0];
+                var [c, d] = [null, null];
+                var [e, f] = [null, null];
+            }
+            if (response.rows.length === 3) {
+                var [a, b] = response.rows[0];
+                var [c, d] = response.rows[1];
+                var [e, f] = response.rows[2];
+            }
             const videoIDs = [a, c, e];
 
             db.update_most_viewed_videos([a, b, c, d, e, f, channelID], (err, response) => {
@@ -128,33 +142,32 @@ module.exports = {
                     request(videoInfo, function(error, response, body) {
                         let obj = JSON.parse(body);
 
-                        if (obj.items.length === 0) {
-                        } else {
+                        if (obj.items.length === 0) {} else {
 
-                        const name = obj.items[0].snippet.localized.title
-                        switch (i) {
-                            case 0:
-                                db.update_most_viewed_name1([name, channelID], (err, response) => {
-                                    if (err) {
-                                        console.log(err);
-                                    }
-                                });
-                                break;
-                            case 1:
-                                db.update_most_viewed_name2([name, channelID], (err, response) => {
-                                    if (err) {
-                                        console.log(err);
-                                    }
-                                });
-                                break;
-                            case 2:
-                                db.update_most_viewed_name3([name, channelID], (err, response) => {
-                                    if (err) {
-                                        console.log(err);
-                                    }
-                                });
-                                break;
-                        }
+                            const name = obj.items[0].snippet.localized.title
+                            switch (i) {
+                                case 0:
+                                    db.update_most_viewed_name1([name, channelID], (err, response) => {
+                                        if (err) {
+                                            console.log(err);
+                                        }
+                                    });
+                                    break;
+                                case 1:
+                                    db.update_most_viewed_name2([name, channelID], (err, response) => {
+                                        if (err) {
+                                            console.log(err);
+                                        }
+                                    });
+                                    break;
+                                case 2:
+                                    db.update_most_viewed_name3([name, channelID], (err, response) => {
+                                        if (err) {
+                                            console.log(err);
+                                        }
+                                    });
+                                    break;
+                            }
                         }
 
 
@@ -208,9 +221,9 @@ module.exports = {
                 }
 
                 db.read_id([channelID], (err, res) => {
-                  console.log('KEY KEY: ', key)
+                    console.log('KEY KEY: ', key)
                     db.update_avg_view_duration([res[0].id, response.rows[0][0]], (err, response) => {
-                      console.log('STAGE 2: AVG VIEW DURATION ABOUT TO BE ADDED')
+                        console.log('STAGE 2: AVG VIEW DURATION ABOUT TO BE ADDED')
                         if (err) {
                             console.log(err);
                         } else {
@@ -247,16 +260,16 @@ module.exports = {
                 ];
                 return next();
             } else {
-            let update_device_type_params = [];
+                let update_device_type_params = [];
 
-            for (let i = 0; i < response.rows.length; i++) {
-                update_device_type_params.push(response.rows[i][1]);
-            }
+                for (let i = 0; i < response.rows.length; i++) {
+                    update_device_type_params.push(response.rows[i][1]);
+                }
 
-            update_device_type_params.push(key);
+                update_device_type_params.push(key);
 
-            db.update_device_type(update_device_type_params, (err, res) => {});
-            return next();
+                db.update_device_type(update_device_type_params, (err, res) => {});
+                return next();
             }
         });
     },
@@ -266,19 +279,19 @@ module.exports = {
         request(thumbnail, function(error, response, body) {
 
             const obj = JSON.parse(body);
-            if(obj.items.length != 0){
+            if (obj.items.length != 0) {
 
 
-            db.update_thumbnailURL([obj.items[0].snippet.thumbnails.default.url, req.user.id], (err, res) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log('THUMBNAIL UPDATE SUCCESS');
-                }
-            })
+                db.update_thumbnailURL([obj.items[0].snippet.thumbnails.default.url, req.user.id], (err, res) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log('THUMBNAIL UPDATE SUCCESS');
+                    }
+                })
 
 
-            return res.redirect('/#/dashboard');
+                return res.redirect('/#/dashboard');
             }
             return res.redirect('/#/dashboard');
         })
@@ -296,10 +309,10 @@ module.exports = {
     },
     read_id: (req, response, next) => {
 
-      if(req.user.id === undefined){
+        if (req.user.id === undefined) {
 
-        return response.status(500).redirect('/');
-      }
+            return response.status(500).redirect('/');
+        }
 
         db.read_id([req.user.id], (err, res) => {
 
@@ -320,8 +333,8 @@ module.exports = {
     },
     read_individual_watched: (req, res, next) => {
         db.read_individual_watched([req.session.data.id], (err, minutes) => {
-          if(err) conosle.log('read individual watched: ', err)
-          console.log('minutes: ', minutes)
+            if (err) conosle.log('read individual watched: ', err)
+            console.log('minutes: ', minutes)
             req.session.data.avgindividualsec = minutes[0].avgsecwatched;
             next();
         })
@@ -345,16 +358,12 @@ module.exports = {
         })
     },
     error: (req, res, next) => {
-      // console.log('REQ: ', req);
-      // console.log('RES: ', res);
-      console.log('ERROR LOGGER');
-      return next();
+        console.log('ERROR LOGGER');
+        return next();
     },
     error2: (req, res, next) => {
-      // console.log('REQ: ', req);
-      // console.log('RES: ', res);
-      console.log('ERROR LOGGER 2');
-      return next();
+        console.log('ERROR LOGGER 2');
+        return next();
     }
 
 
