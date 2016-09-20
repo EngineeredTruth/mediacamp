@@ -128,9 +128,7 @@ module.exports = {
                     request(videoInfo, function(error, response, body) {
                         let obj = JSON.parse(body);
 
-                        console.log('BODY: ',body);
                         if (obj.items.length === 0) {
-                          console.log('Object length is 0');
                         } else {
 
                         const name = obj.items[0].snippet.localized.title
@@ -210,12 +208,13 @@ module.exports = {
                 }
 
                 db.read_id([channelID], (err, res) => {
-                    const id = res[0].id;
-                    db.update_avg_view_duration([key, response.rows[0][0]], (err, response) => {
+                  console.log('KEY KEY: ', key)
+                    db.update_avg_view_duration([res[0].id, response.rows[0][0]], (err, response) => {
+                      console.log('STAGE 2: AVG VIEW DURATION ABOUT TO BE ADDED')
                         if (err) {
                             console.log(err);
                         } else {
-                            // console.log(response);
+                            console.log('STAGE 3: SUCCESS: ', response)
                         }
                     })
                 });
@@ -277,7 +276,7 @@ module.exports = {
                     console.log('THUMBNAIL UPDATE SUCCESS');
                 }
             })
-            console.log('Snippets from thumbnail ctrl BODY: ', obj.items[0].snippet.thumbnails.default.url);
+
 
             return res.redirect('/#/dashboard');
             }

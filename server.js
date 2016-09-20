@@ -99,8 +99,6 @@ passport.use(new YouTubeStrategy({
     },
     function(accessToken, refreshToken, profile, done) {
 
-      console.log('ERROR CHECKER: ', profile);
-      console.log("What's done? ", done);
       if(profile === false){
         return done(null, {profile: profile});
       }
@@ -124,8 +122,9 @@ passport.use(new YouTubeStrategy({
                         console.log(err);
                     } else {
                         let id = res[0].id;
-                        console.log('id: ', id);
+                        console.log('Before inserting time watched: ', id)
                         db.update_u_id_time_watched([id], (err, res) => {
+                          console.log('Time watched inserted: ', res)
                             if (err) {
                                 console.log(err);
                             }
@@ -167,7 +166,6 @@ app.get('/login', (req, res, next) => {
 });
 
 app.get('/authCheck', (req, res, next) => {
-  console.log('req.isAuthenticated: ', req.isAuthenticated);
   if(req.isAuthenticated()){
     return res.send({loggedin:true})
   }
@@ -184,12 +182,10 @@ app.get('/logout', (req, res) => {
 })
 
 passport.serializeUser((user, done) => {
-  console.log('serializeUser: ', user);
     done(null, user); // put the whole user object from YouTube on the sesssion;
 });
 
 passport.deserializeUser((obj, done) => {
-    console.log('deserializeUser is hit');
     //Only do something here that needs to be done with every request
     done(null, obj); // get data from session and put it on req.user in every endpoint;
 });
