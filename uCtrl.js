@@ -294,20 +294,20 @@ module.exports = {
             return res.status(200).redirect('/auth');
         }
     },
-    read_id: (req, res, next) => {
+    read_id: (req, response, next) => {
 
       if(req.user.id === undefined){
 
-        return res.status(500).redirect('/');
+        return response.status(500).redirect('/');
       }
 
         db.read_id([req.user.id], (err, res) => {
 
-            if (req.user) {
+            if (req.user && res[0]) {
                 req.user.key = res[0].id;
                 return next();
             } else {
-                return res.status(500).redirect('/auth');
+                return response.status(500).redirect('/auth');
             }
         })
     },

@@ -42,7 +42,6 @@ var users = [];
 
 //Socket IO
 io.on('connection', (socket) => {
-    console.log('SOCKET INFORMATION: ', socket.conn.id);
 
   //receives message from client, contains username
     socket.on('masterCtrl to server', (msg) => {
@@ -61,8 +60,6 @@ for(let i = 0; i < users.length; i++){
       });
 
       //sends msgs to all clients, contains username
-      console.log('ALL USERS: ', users);
-      console.log('MESSAGE PASSED INTO MASTERCTRL: ', msg);
         io.emit('server to masterCtrl', msg);
 
     });
@@ -82,7 +79,6 @@ for(let i = 0; i < users.length; i++){
           }
         }
         io.emit('server to chatList', users);
-        console.log('SOCKET DISCONNECT: ', socket.conn.id);
     })
 
 });

@@ -42,47 +42,44 @@ var users = [];
 
 //Socket IO
 io.on('connection', (socket) => {
-    console.log('SOCKET INFORMATION: ', socket.conn.id);
 
-  //receives message from client, contains username
+    //receives message from client, contains username
     socket.on('masterCtrl to server', (msg) => {
 
-//write a check here to ponly push name if it doesn't already exist.
-for(let i = 0; i < users.length; i++){
-  if(users[i].userName === msg.user){
-    users.splice(i,1);
-    i--;
-  }
-}
-      users.push({userName: msg.user,
-        userID: socket.conn.id,
-        channelID: msg.channelid,
-        thumbnailurl: msg.thumbnailurl
-      });
+        //write a check here to ponly push name if it doesn't already exist.
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].userName === msg.user) {
+                users.splice(i, 1);
+                i--;
+            }
+        }
+        users.push({
+            userName: msg.user,
+            userID: socket.conn.id,
+            channelID: msg.channelid,
+            thumbnailurl: msg.thumbnailurl
+        });
 
-      //sends msgs to all clients, contains username
-      console.log('ALL USERS: ', users);
-      console.log('MESSAGE PASSED INTO MASTERCTRL: ', msg);
+        //sends msgs to all clients, contains username
         io.emit('server to masterCtrl', msg);
 
     });
 
-//triggers when directive loads
+    //triggers when directive loads
     socket.on('chatList to server', () => {
         //Sends chatlist to cliet
         io.emit('server to chatList', users);
     });
 
     socket.on('disconnect', () => {
-        for(let i = 0; i < users.length; i++){
-          if(users[i].userID === socket.conn.id){
-            users.splice(i,1);
-            i--;
-            console.log('LIST OF USERS', users);
-          }
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].userID === socket.conn.id) {
+                users.splice(i, 1);
+                i--;
+                console.log('LIST OF USERS', users);
+            }
         }
         io.emit('server to chatList', users);
-        console.log('SOCKET DISCONNECT: ', socket.conn.id);
     })
 
 });
@@ -99,9 +96,11 @@ passport.use(new YouTubeStrategy({
     },
     function(accessToken, refreshToken, profile, done) {
 
-      if(profile === false){
-        return done(null, {profile: profile});
-      }
+        if (profile === false) {
+            return done(null, {
+                profile: profile
+            });
+        }
 
         oauth2Client.setCredentials({
             access_token: accessToken,
@@ -113,32 +112,63 @@ passport.use(new YouTubeStrategy({
         obj.auth = oauth2Client;
 
         db.read_user([profile.id], (err, response) => {
-
+            console.log('READ USER RESPONSE: ', typeof response[0]);
             if (typeof response[0] === 'undefined') {
-                db.create_user([profile.displayName, profile.id, refreshToken], function(err, response) {});
+                db.create_user([profile.displayName, profile.id, refreshToken], function(err, response) {
+                    console.log('user has been created: ', response);
 
-                db.read_id([profile.id], (err, res) => {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        let id = res[0].id;
-                        console.log('Before inserting time watched: ', id)
-                        db.update_u_id_time_watched([id], (err, res) => {
-                          console.log('Time watched inserted: ', res)
-                            if (err) {
-                                console.log(err);
-                            }
-                        })
-                        db.update_u_id_device_type([id], (err, res) => {
-                            if (err) {
-                                console.log(err);
-                            }
-                        })
-                    }
-                })
+                    db.read_id([profile.id], (err, res) => {
+                        console.log('response from read_id: ', res)
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            let id = res[0].id;
+                            console.log('Before inserting time watched: ', id)
+                            db.update_u_id_time_watched([id], (err, res) => {
+                                console.log('Time watched inserted: ', res)
+                                if (err) {
+                                    console.log(err);
+                                }
+                            })
+                            db.update_u_id_device_type([id], (err, res) => {
+                                if (err) {
+                                    console.log(err);
+                                }
+                            })
+                        }
+                    })
+                });
 
                 return done(null, obj);
             } else {
+                console.log('WHATS PROFILE ID: ', profile.id);
+                db.read_id([profile.id], (err, res) => {
+                    console.log('NOTHING: ', res)
+                    let id = res[0].id;
+                    console.log('ID ID: ', id);
+                    db.read_individual_watched([id], (err, res) => {
+                        if (res.length === 0) {
+                            db.update_u_id_time_watched([id], (err, res) => {
+                                console.log('Time watched inserted: ', res)
+                                if (err) {
+                                    console.log(err);
+                                }
+                            })
+                        }
+                    })
+                    db.read_device_data([id], (err, res) => {
+                        if (res.length === 0) {
+                            db.update_u_id_device_type([id], (err, res) => {
+                                if (err) {
+                                    console.log(err);
+                                }
+                                console.log('error handler: ', res)
+                            })
+                        }
+                    })
+                })
+
+
                 console.log('not a new user');
                 return done(null, obj);
             }
@@ -147,13 +177,13 @@ passport.use(new YouTubeStrategy({
 ));
 
 //END POINTS
-app.get('/auth/', uCtrl.error, passport.authenticate('youtube'), uCtrl.error2);
-app.get('/auth/callback',  uCtrl.error, passport.authenticate('youtube', {
+app.get('/auth/', passport.authenticate('youtube'), uCtrl.error2);
+app.get('/auth/callback', passport.authenticate('youtube', {
     failureRedirect: '/auth'
-}),  uCtrl.error, uCtrl.read_id, uCtrl.analysis, uCtrl.device, uCtrl.thumbnail);
+}), uCtrl.read_id, uCtrl.analysis, uCtrl.device, uCtrl.thumbnail);
 
 app.get('/getAllData', uCtrl.read_user, uCtrl.read_watch_data, uCtrl.read_individual_watched,
-  uCtrl.read_device_data, uCtrl.read_avg_device_data);
+    uCtrl.read_device_data, uCtrl.read_avg_device_data);
 
 // serialize / deserialize for passport
 // (only used with session, automatically set as next step from passport.use)
@@ -166,19 +196,22 @@ app.get('/login', (req, res, next) => {
 });
 
 app.get('/authCheck', (req, res, next) => {
-  if(req.isAuthenticated()){
-    return res.send({loggedin:true})
-  }
-  else {
-    return res.send({loggedin:false});
-  }
+    if (req.isAuthenticated()) {
+        return res.send({
+            loggedin: true
+        })
+    } else {
+        return res.send({
+            loggedin: false
+        });
+    }
 })
 
 app.get('/logout', (req, res) => {
-  req.session.destroy((e)=>{
-    req.logout();
-    res.redirect('/');
-  })
+    req.session.destroy((e) => {
+        req.logout();
+        res.redirect('/');
+    })
 })
 
 passport.serializeUser((user, done) => {
