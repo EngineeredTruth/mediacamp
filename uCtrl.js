@@ -106,7 +106,7 @@ module.exports = {
             if (err) {
                 console.log(err);
             }
-            console.log('DERP: ', response.rows.length)
+
             if (response.rows === undefined) {
                 response.rows = [
                     [null, null],
@@ -299,11 +299,13 @@ module.exports = {
     read_user: (req, res, next) => {
 
         if (req.user) {
+          console.log('req.user: ', req.user)
             db.read_user([req.user.id], (err, res1) => {
                 req.session.data = res1[0];
                 return next();
             })
         } else {
+          console.log('Redirecting...')
             return res.status(200).redirect('/auth');
         }
     },
@@ -327,7 +329,11 @@ module.exports = {
     read_watch_data: (req, res, next) => {
         // console.log(req.session.data);
         db.read_avg_sec_watched((err, res2) => {
+          if(err) console.log(err);
+
+          if(res2) {
             req.session.data.avgsecwatched = res2[0].avg;
+          }
             next();
         });
     },
@@ -335,7 +341,7 @@ module.exports = {
         db.read_individual_watched([req.session.data.id], (err, minutes) => {
             if (err) conosle.log('read individual watched: ', err)
             console.log('minutes: ', minutes)
-            req.session.data.avgindividualsec = minutes[0].avgsecwatched;
+            if(minutes) req.session.data.avgindividualsec = minutes[0].avgsecwatched;
             next();
         })
     },
@@ -344,7 +350,7 @@ module.exports = {
             if (err) {
                 console.log('Error from read_device_data: ', err);
             }
-            req.session.data.device = response[0];
+            if(response) req.session.data.device = response[0];
             next();
         });
     },
@@ -353,7 +359,7 @@ module.exports = {
             if (err) {
                 console.log('Error from read_avg_device_data', err)
             }
-            req.session.data.device_avg = response[0];
+            if(response) req.session.data.device_avg = response[0];
             res.send(req.session.data);
         })
     },
