@@ -4,141 +4,23 @@
             Intermediate
         </div>
     </div>
-    <section class='outer-container'>
-        <div class='inner-container'>
-            <div class='review-container left'>
-                <h1>Video Reviews</h1>
-                <a href='https://www.youtube.com/watch?v=HDEIHDSj8gs'><img src='img/review/gh4-1.jpg' /></a>
-                <a href='https://www.youtube.com/watch?v=gxGekOHEPuc'><img src='img/review/gh4-2.jpg' /></a>
-            </div>
-            <div class='product-container right'>
-                <a href="https://www.amazon.com/Panasonic-DMC-GH4-Mirrorless-Digital-14-140mm/dp/B00LEEF6XC/ref=as_li_ss_il?s=photo&ie=UTF8&qid=1471023145&sr=1-3&keywords=GH4&linkCode=li3&tag=medi0513-20&linkId=96cece6feb9422968f4f814618a76764" target="_blank">
-                    <img class=product src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00LEEF6XC&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0513-20"></a>
-                <img src="https://ir-na.amazon-adsystem.com/e/ir?t=medi0513-20&l=li3&o=1&a=B00LEEF6XC" />
-            </div>
-        </div>
-        <div class='inner-container description'>
-            <h1>GH4 Panasonic</h1>
-            <p>The Panasonic GH4 is one of the first affordable 4K DSLR cameras. Panasonic designed this camera with photographers and videographers in mind.</p>
-            <h3>Features</h3>
-            <ul class='features'>
-              <li class='feature-li'>Viewfinder flips all the way around so you can film yourself</li>
-              <li class='feature-li'>You can remote control via an app on your smart phone, allowing you more control when filming yourself</li>
-              <li class='feature-li'>Focus peaking and Zebra, which shows you what's in focus by putting tiny dots on them</li>
-            </ul>
-        </div>
-    </section>
 
-    <section class='outer-container'>
-        <div class='inner-container description'>
-            <h1>Magnus Video Tripod with Fluid Head</h1>
-            <p>
-                Thundercats yr sriracha readymade squid, occupy fashion axe blue bottle deep v swag gentrify marfa chartreuse mlkshk. Hammock freegan VHS, intelligentsia 90's meggings vice synth try-hard. Distillery migas tofu dreamcatcher cred, man braid gluten-free
-                sriracha bitters cliche listicle chicharrones shoreditch. Everyday carry try-hard aesthetic godard trust fund kale chips. Bicycle rights chartreuse tofu, taxidermy green juice ugh chia scenester sustainable butcher. Cred tattooed mlkshk,
-                vice stumptown pitchfork kitsch tacos venmo hashtag. Scenester +1 before they sold out everyday carry actually.
-            </p>
-        </div>
-        <div class='inner-container'>
-            <div class='product-container left'>
-                <a href="https://www.amazon.com/gp/product/B005GMWNY8/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B005GMWNY8&linkCode=as2&tag=medi0513-20&linkId=98a4731fc58598ac9fb5a3ad1e991f38">
-                    <img class='product' border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B005GMWNY8&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=medi0513-20"></a>
-                <img src="//ir-na.amazon-adsystem.com/e/ir?t=medi0513-20&l=am2&o=1&a=B005GMWNY8" />
+    <section ng-repeat='product in intermediateArray'>
+        <div class='outer-container-equipment' ng-class-even="'flex-direction-reverse'" ng-class-odd="'flex-direction-regular'">
+            <div class='inner-container-equipment' ng-class-even="'flex-direction-reverse'" ng-class-odd="'flex-direction-regular'">
+                <div class='review-container'>
+                    <h1>Video Reviews</h1>
+                    <img ng-click="clickToOpen(product.reviewVideo1)" ng-src='img/review/{{product.reviewThumb1}}' />
+                    <img ng-click="clickToOpen(product.reviewVideo2)" ng-src='img/review/{{product.reviewThumb2}}' />
+                </div>
+                <div class='product-container'>
+                    <a ng-href="{{product.affiliateLink}}">
+                        <img class='product' ng-src="{{product.productImg}}"></a>
+                </div>
             </div>
-            <div class='review-container right'>
-                <h1>Video Reviews</h1>
-                <a href='https://www.youtube.com/watch?v=1f831LREqho'><img src='img/review/magnus-review-1.jpg' /></a>
-                <a href='https://www.youtube.com/watch?v=EqUzdoOKEI4'><img src='img/review/magnus-review-2.jpg' /></a>
-            </div>
-        </div>
-    </section>
-
-    <section class='outer-container'>
-        <div class='inner-container'>
-            <div class='product-container right'>
-                <a href="https://www.amazon.com/EOS-Rebel-External-Microphone-microphone/dp/B00H4I5574/ref=as_li_ss_il?ie=UTF8&qid=1470872600&sr=8-1-fkmr1&keywords=canon+t5i+lavalier&linkCode=li3&tag=medi0513-20&linkId=9176c9b24b6ab1c3d4701b3a5b1e0fe5" target="_blank">
-                    <img class='product' src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00H4I5574&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0513-20"></a>
-                <img src="https://ir-na.amazon-adsystem.com/e/ir?t=medi0513-20&l=li3&o=1&a=B00H4I5574" />
-            </div>
-            <div class='review-container left'>
-                <h1>Video Reviews</h1>
-                <a href='https://www.youtube.com/watch?v=AsFp-71l-d4'><img src='img/review/begin-lavalier-1.jpg' /></a>
-                <a href='https://www.youtube.com/watch?v=XiDyjCiaMd8'><img src='img/review/begin-lavalier-2.jpg' /></a>
-            </div>
-        </div>
-
-        <div class='inner-container description'>
-            <h1>Lavalier Microphone for Indoor Recording</h1>
-            <p>
-              A lavalier microphone is your best bet when filming in an acoustic room or filming outdoors when there's wind. The lavalier significantly
-              reduces ambient sounds, while usually being the most affordable option as well. The reason why lavaliers will record better than any
-              other microphone at the same price range is because lavaliers are so close to a speaker's mouth which hellp with recording quality sound.
-            </p>
-        </div>
-
-    </section>
-
-    <section class='outer-container'>
-        <div class='inner-container description'>
-            <h1>Rode VideoMic Pro Compact Shotgun Microphone</h1>
-            <p>
-              The Rode VideoMic Pro Shotgun is records best in soundproofed rooms or outdoors when there's little wind. The quality of the sound for <thead>
-                price of this microphone makes it a YouTuber favorite. The 3 main benefits with a shotgun microphone over a lavalier is: 1. Viewers don't have
-                to see your microphone, 2. convenience of not having to hook up a microphone and 3. capturing a small amount of reverb makes the recording better.
-              </thead>
-            </p>
-        </div>
-        <div class='inner-container'>
-            <div class='product-container left'>
-            <a href="https://www.amazon.com/Rode-VMPR-VideoMic-Rycote-Shockmount/dp/B00YAZHRZM/ref=as_li_ss_il?s=photo&ie=UTF8&qid=1472063650&sr=1-1&keywords=rode+videopro&linkCode=li3&tag=medi0513-20&linkId=b844b38567e6ce7315b51b62e4c4a591" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00YAZHRZM&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0513-20" ></a>
-            <img class='product' src="https://ir-na.amazon-adsystem.com/e/ir?t=medi0513-20&l=li3&o=1&a=B00YAZHRZM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-            </div>
-            <div class='review-container right'>
-                <h1>Video Reviews</h1>
-                <a href='https://www.youtube.com/watch?v=HM-dTyTeCes'><img src='img/review/rode-review-1.jpg' /></a>
-                <a href='https://www.youtube.com/watch?v=6JhD4D6N2sE'><img src='img/review/rode-review-2.jpg' /></a>
-            </div>
-        </div>
-    </section>
-
-    <section class='outer-container'>
-        <div class='inner-container'>
-            <div class='product-container right'>
-                <a href="https://www.amazon.com/LimoStudio-Photography-Lighting-Equipment-AGG814/dp/B00E4YS2XU/ref=as_li_ss_il?s=photo&ie=UTF8&qid=1472062868&sr=1-1&keywords=softbox&linkCode=li3&tag=medi0513-20&linkId=4c58991c7192f5f9baf84d884db00273" target="_blank">
-                <img class='product' border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00E4YS2XU&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0513-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=medi0513-20&l=li3&o=1&a=B00E4YS2XU" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-            </div>
-            <div class='review-container left'>
-                <h1>Video Reviews</h1>
-                <a href='https://www.youtube.com/watch?v=u6wAMSHozfw'><img src='img/review/limostudio-review-1.jpg' /></a>
-                <a href='https://www.youtube.com/watch?v=0zyBQAex0Kw'><img src='img/review/limostudio-review-2.jpg' /></a>
-            </div>
-        </div>
-
-        <div class='inner-container description'>
-            <h1>LimoStudio 700W Photography Softbox Light Lighting</h1>
-            <p>
-            After your first few YouTube videos, you may notice that your video quality is looking like crap. It's easy to rush into buying the best DSLR available.
-            In most cases camera quality isn't the problem, it's usually lighting. Lighting plays a great role in the quality and also look of a video. Getting a basic
-            pair of softbox lights will improve the video quality of videos while also giving you control over lighting. This is particularly useful when shooting at night.
-            </p>
-        </div>
-    </section>
-
-    <section class='outer-container'>
-        <div class='inner-container description'>
-            <h1>Sound Proofing Foam</h1>
-            <p>
-              If you record your videos indoors, you'll probably notice a lot of reverb in your sound. This is especially annoying if you have hardwood or tile flooring. Buying a better microphone isn't going to help.
-              The best solution is to soundproof your room with some acoustic foam.
-            </p>
-        </div>
-        <div class='inner-container'>
-            <div class='product-container left'>
-              <a href="https://www.amazon.com/12-Pack-Acoustic-Panels-Soundproofing/dp/B00TP7C9YY/ref=as_li_ss_il?s=aps&ie=UTF8&qid=1472064848&sr=1-2-catcorr&keywords=soundproofing+foam&linkCode=li3&tag=medi0513-20&linkId=c288f0e103721d4b13f719ba757b3038" target="_blank">
-              <img class='product' border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00TP7C9YY&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0513-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=medi0513-20&l=li3&o=1&a=B00TP7C9YY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-            <div class='review-container right'>
-                <h1>Video Reviews</h1>
-                <a href='https://www.youtube.com/watch?v=_tRun_u4EpA'><img src='img/review/foam-review-1.jpg' /></a>
-                <a href='https://www.youtube.com/watch?v=ihckzg513Ww'><img src='img/review/foam-review-2.jpg' /></a>
+            <div class='inner-container description'>
+                <h1>{{product.header}}</h1>
+                <p>{{product.body}}</p>
             </div>
         </div>
     </section>

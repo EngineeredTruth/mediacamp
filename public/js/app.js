@@ -26,10 +26,12 @@ var app = angular.module('app',["ui.router",'ui.bootstrap','ngAnimate','ngTouch'
       .state('intermediate', {
         url: '/intermediate',
         templateUrl: './views/intermediate.html',
+        controller: 'intermediateCtrl'
       })
       .state('advance', {
         url: '/advance',
         templateUrl: './views/advance.html',
+        controller: 'advanceCtrl'
       })
       .state('review', {
         url: '/review',

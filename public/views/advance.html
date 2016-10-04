@@ -4,28 +4,24 @@
             Advance
         </div>
     </div>
-    <section class='outer-container'>
-        <div class='inner-container'>
-            <div class='review-container left'>
-                <h1>Video Reviews</h1>
-                <a href='https://www.youtube.com/watch?v=HDEIHDSj8gs'><img src='img/review/gh4-1.jpg' /></a>
-                <a href='https://www.youtube.com/watch?v=gxGekOHEPuc'><img src='img/review/gh4-2.jpg' /></a>
+
+    <section ng-repeat='product in intermediateArray'>
+        <div class='outer-container-equipment' ng-class-even="'flex-direction-reverse'" ng-class-odd="'flex-direction-regular'">
+            <div class='inner-container-equipment' ng-class-even="'flex-direction-reverse'" ng-class-odd="'flex-direction-regular'">
+                <div class='review-container'>
+                    <h1>Video Reviews</h1>
+                    <img ng-click="clickToOpen(product.reviewVideo1)" ng-src='img/review/{{product.reviewThumb1}}' />
+                    <img ng-click="clickToOpen(product.reviewVideo2)" ng-src='img/review/{{product.reviewThumb2}}' />
+                </div>
+                <div class='product-container'>
+                    <a ng-href="{{product.affiliateLink}}">
+                        <img class='product' ng-src="{{product.productImg}}"></a>
+                </div>
             </div>
-            <div class='product-container right'>
-                <a href="https://www.amazon.com/Panasonic-DMC-GH4-Mirrorless-Digital-14-140mm/dp/B00LEEF6XC/ref=as_li_ss_il?s=photo&ie=UTF8&qid=1471023145&sr=1-3&keywords=GH4&linkCode=li3&tag=medi0513-20&linkId=96cece6feb9422968f4f814618a76764" target="_blank">
-                    <img class=product src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00LEEF6XC&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0513-20"></a>
-                <img src="https://ir-na.amazon-adsystem.com/e/ir?t=medi0513-20&l=li3&o=1&a=B00LEEF6XC" />
+            <div class='inner-container description'>
+                <h1>{{product.header}}</h1>
+                <p>{{product.body}}</p>
             </div>
-        </div>
-        <div class='inner-container description'>
-            <h1>GH4 Panasonic</h1>
-            <p>The Panasonic GH4 is one of the first affordable 4K DSLR cameras. Panasonic designed this camera with photographers and videographers in mind.</p>
-            <h3>Features</h3>
-            <ul>
-              <li>Viewfinder flips all the way around so you can film yourself</li>
-              <li>You can remote control via an app on your smart phone, allowing you more control when filming yourself</li>
-              <li>Focus peaking and Zebra, which shows you what's in focus by putting tiny dots on them</li>
-            </ul>
         </div>
     </section>
 
