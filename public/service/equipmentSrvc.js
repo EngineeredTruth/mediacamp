@@ -103,7 +103,7 @@ const soundFoam = {
   reviewThumb1 : 'foam-review-1.jpg',
   reviewVideo2 : 'ihckzg513Ww',
   reviewThumb2 : 'foam-review-2.jpg',
-  affiliateLink : 'http://amzn.to/2dZzxlJ',
+  affiliateLink : 'http://amzn.to/2dY93go',
   productImg : '//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00TP7C9YY&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0513-20',
   header : 'Sound Proofing Foam',
   body :"If you record your videos indoors, you'll probably notice a lot of reverb in your sound. This is especially annoying if you have hardwood or tile flooring. Buying a better microphone isn't going to help. The best solution is to soundproof your room with some acoustic foam."
@@ -129,12 +129,35 @@ const ravelliTripod = {
   body : "Fluid head tripod is an essiential if you want smooth panning shots. With non-fluid tripod heads, you'll have a lot of jarring, skipping and uneven resistance which will mess up a shot. This one by Ravelli is the #1 fluid head tripod on Amazon at a reasonable price"
 }
 
+const saramonicLavalier = {
+  reviewVideo1 : 'ppLPyyPGWPE',
+  reviewThumb1 : 'saramonic-review-1.jpg',
+  reviewVideo2 : 'OU0a2uSOtPQ',
+  reviewThumb2 : 'saramonic-review-2.jpg',
+  affiliateLink : 'http://amzn.to/2dE7g5D',
+  productImg : '//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01AYDN004&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0513-20',
+  header : 'Saramonic Lavalier Microphone',
+  body : "lavalier microphone is your best bet when filming in an acoustic room or filming outdoors when there's wind. The lavalier significantly reduces ambient sounds, while usually being the most affordable option as well. The reason why lavaliers will record better than any" +
+    "other microphone at the same price range is because lavaliers are so close to a speaker's mouth which hellp with recording quality sound."
+}
+
+const studioPro = {
+  reviewVideo1 : 'WNcZ-kD0cBUx',
+  reviewThumb1 : 'studioPRO-1.jpg',
+  reviewVideo2 : 'Sp_8USihL9w',
+  reviewThumb2 : 'studioPRO-2.jpg',
+  affiliateLink : 'http://amzn.to/2dpiSE9',
+  productImg : "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00FG0LQJI&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=medi0eb7-20",
+  header : 'StudioPRO Double S-900DN',
+  body : 'Exact control over lighting is especially important when thousands of people are watching your videos. These lights are more expensive than typically lighting, but since their dimmable, you can have the exact amount of lighting you want on your subject.'
+}
+
 this.advanceArray = [
   gh4,
-  magnusTripod,
-  basicLavalier,
+  ravelliTripod,
+  saramonicLavalier,
   rodeShotgun,
-  limoStudio,
+  studioPro,
   soundFoam
 ]
 
