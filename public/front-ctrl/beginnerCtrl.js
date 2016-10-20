@@ -5,7 +5,7 @@ app.controller('beginnerCtrl', function($rootScope, $scope, ngDialog, $sce, equi
           console.log('Clicking Open: ', x);
           ngDialog.open({ template: '../templates/popupTmpl.html',
           className: 'ngdialog-theme-default',
-          height: 700,
+          height: 440,
           width: 750,
           closeByDocument: true,
           cashe: false,
