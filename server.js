@@ -18,6 +18,8 @@ const oauth2Client = new OAuth2(config.GOOGLE_CLIENT_ID, config.GOOGLE_CLIENT_SE
 
 const app = module.exports = express();
 
+app.use(require('prerender-node'));
+
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
